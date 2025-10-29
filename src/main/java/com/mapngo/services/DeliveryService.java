@@ -36,6 +36,11 @@ public class DeliveryService {
 
     public String deleteAllDeliveries() {
         deliveryRepository.deleteAll();
+        return "it's all over now";
+    }
+
+    public String deleteDeliveryById(Long id) {
+        deliveryRepository.deleteById(id);
         return "it's over, he knows";
     }
 }

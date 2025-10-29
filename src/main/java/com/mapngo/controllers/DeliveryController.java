@@ -19,20 +19,28 @@ public class DeliveryController {
         this.deliveryService = deliveryService;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<List<DeliveryResponseDto>> getAllDeliveries(){
         return ResponseEntity.ok(deliveryService.getAllDeliveries());
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<DeliveryResponseDto> postDelivery(@RequestBody DeliveryRequestDto deliveryRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(deliveryService.postDelivery(deliveryRequestDto));
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping
     public ResponseEntity<?> deleteAllDeliveries(){
         return ResponseEntity.ok(deliveryService.deleteAllDeliveries());
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDeliveryById(@PathVariable(name = "id") Long id){
+        return ResponseEntity.ok(deliveryService.deleteDeliveryById(id));
+    }
 }
 

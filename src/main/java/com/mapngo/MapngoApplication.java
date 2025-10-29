@@ -9,5 +9,4 @@ public class MapngoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MapngoApplication.class, args);
 	}
-
 }
