@@ -5,9 +5,13 @@ import com.mapngo.dtos.response.DeliveryResponseDto;
 import com.mapngo.entities.DeliveryEntity;
 import com.mapngo.mappers.DeliveryMapper;
 import com.mapngo.repositories.DeliveryRepository;
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +46,16 @@ public class DeliveryService {
     public String deleteDeliveryById(Long id) {
         deliveryRepository.deleteById(id);
         return "it's over, he knows";
+    }
+
+    public ResponseEntity<?> updateDelivery(Long id, DeliveryRequestDto delivery) {
+        Optional<DeliveryEntity> currentDelivery = deliveryRepository.findById(id);
+        if(currentDelivery.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Delivery not found");
+        }
+
+        var newDelivery = currentDelivery.get();
+        BeanUtils.copyProperties(delivery, newDelivery, "id");
+        return ResponseEntity.status(HttpStatus.OK).body(deliveryRepository.save(newDelivery));
     }
 }

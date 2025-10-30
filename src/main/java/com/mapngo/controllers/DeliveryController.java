@@ -42,5 +42,14 @@ public class DeliveryController {
     public ResponseEntity<?> deleteDeliveryById(@PathVariable(name = "id") Long id){
         return ResponseEntity.ok(deliveryService.deleteDeliveryById(id));
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseEntity<?>> updateDelivery(
+            @RequestBody DeliveryRequestDto delivery,
+            @PathVariable Long id
+            ) {
+        return ResponseEntity.ok().body(deliveryService.updateDelivery(id, delivery));
+    }
 }
 
