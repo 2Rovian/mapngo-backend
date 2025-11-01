@@ -44,4 +44,3 @@ volumes:
 networks:
   public_network:
 
-#jdbc:postgresql://localhost:5173/mapngo-db
