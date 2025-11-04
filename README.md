@@ -22,7 +22,7 @@ Backend do projeto **MapNGo**, desenvolvido com **Java Spring Boot** e **Postgre
 | POST    | `/deliveries/`     | Cria uma nova entrega com os dados informados (cliente, endereço, peso, latitude, longitude, etc.).   | Entrega criada                     |
 | PUT     | `/deliveries/{id}` | Atualiza os dados de uma entrega existente.                                                           | Entrega atualizada                 |
 | DELETE  | `/deliveries/{id}` | Remove uma entrega específica do sistema.                                                             | String de sucesso ou erro          |
-| DELETE  | `/deliveries/`     | Remove toas as entregas.                                                                              | String de sucesso ou erro          |
+| DELETE  | `/deliveries/`     | Remove todas as entregas.                                                                             | String de sucesso ou erro          |
 
 ## 🚀 Instalação
 
