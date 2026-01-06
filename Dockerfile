@@ -9,7 +9,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Execution
-FROM openjdk:21-jdk
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
